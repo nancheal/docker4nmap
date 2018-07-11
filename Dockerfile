@@ -10,4 +10,8 @@ RUN git clone https://github.com/vulnersCom/nmap-vulners.git nmap-vulners \
 # add searchNse alias in .profile
 RUN echo 'alias searchNse="searchNse(){ ls /usr/share/nmap/scripts/ | grep $1; };searchNse"' > .profile \
     && source .profile
-ENTRYPOINT [ "$@" ]
+
+WORKDIR /
+
+ADD entrypoint.sh /entrypoint.sh
+ENTRYPOINT [ "/entrypoint.sh" ]
