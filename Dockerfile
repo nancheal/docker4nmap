@@ -1,4 +1,10 @@
-FROM alpine:3.7
-# install nmap
-RUN apk update && apk add nmap
-ENTRYPOINT [ "nmap" ]
+FROM alpine:3.8
+# install nmap and nmap-script
+RUN apk update \
+    && apk add git \
+    && apk add nmap \
+    && apk add nmap-scripts
+# add NSE script based on Vulners.com API
+RUN git clone https://github.com/vulnersCom/nmap-vulners.git nmap-vulners \
+    && cp nmap-vulners/vulners.nse /usr/share/nmap/scripts/vulners.nse
+ENTRYPOINT [ "$@" ]
