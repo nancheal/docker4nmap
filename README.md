@@ -18,6 +18,6 @@ docker run -it --rm nancheal/docker4nmap nmap/searchNse
 
 ## Todo
 
-- [] 精简镜像
+- [ ] 精简镜像
 
-- [] find bug and fix it
+- [ ] find bug and fix it
