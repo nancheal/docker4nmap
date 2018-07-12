@@ -4,5 +4,5 @@ if [[ $1 == "searchNse" ]];
 then
     ls /usr/share/nmap/scripts/ | grep $2;
 else
-    "$@"
+    nmap "$@"
 fi
